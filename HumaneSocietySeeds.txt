@@ -1,0 +1,38 @@
+--  5 EMPLOYEES
+--INSERT INTO Employees VALUES('John','Doe','doej','passwordfordoej',1234, 'doej@humanes.org');
+INSERT INTO Employees VALUES('James','Smith','smithj','passwordforsmithj',2345, 'smithj@humanes.org');
+INSERT INTO Employees VALUES('Michael','Garcia','garciam','passwordforgarciam',3456, 'garciam@humanes.org');
+INSERT INTO Employees VALUES('Robert','Rodriguez','rodriguezr','passwordforrodriguezr',4567, 'rodriguezr@humanes.org');
+INSERT INTO Employees VALUES('David','Hernandez','herdnandezd','passwordforherdnandezd',5678, 'herdnandezd@humanes.org');
+
+--5 addresses
+INSERT INTO Addresses VALUES('1122 W St Paul Ave', 'Milwaukee', 'WI',  52129);
+INSERT INTO Addresses VALUES('2233 W St Paul Ave','Milwaukee', 'WI', 52129);
+INSERT INTO Addresses VALUES('3344 W St Paul Ave','Milwaukee', 'WI', 52129);
+INSERT INTO Addresses VALUES('4455 W St Paul Ave','Milwaukee', 'WI',52129);
+INSERT INTO Addresses VALUES('5566 W St Paul Ave','Milwaukee', 'WI',52129);
+
+--5 clients 
+INSERT INTO Clients	VALUES('Catherine','Brown','brownc','passwordforbrownc','brownc@google.com',1);
+INSERT INTO Clients	VALUES('Eliza','Davis','davise','passwordfordavise','davise@google.com',2);
+INSERT INTO Clients	VALUES('Jane','Miller','millerj','passwordformillerj','millerj@google.com',3);
+INSERT INTO Clients	VALUES('Ann','Johnson','johnsona','passwordforjohnsona','johnsona@google.com',4);
+INSERT INTO Clients	VALUES('Nancy','Williams','williamsn',','passwordforwilliamsn','williamsn@google.com',5);
+
+-- 5 categories  species
+INSERT INTO Categories VALUES('cat');
+INSERT INTO Categories VALUES('dog');
+INSERT INTO Categories VALUES('snake');
+INSERT INTO Categories VALUES('mouse');
+INSERT INTO Categories VALUES('hampster');
+
+--5 diet plans
+INSERT INTO Categories VALUES('','CatChow',4);
+INSERT INTO Categories VALUES('','DogKibbel',5);
+INSERT INTO Categories VALUES('','SnakeMice',3);
+INSERT INTO Categories VALUES('','MouseCheese',1);
+INSERT INTO Categories VALUES('','HampsterPellets',1);
+
+-- 5 animals
+
+--10 rooms
