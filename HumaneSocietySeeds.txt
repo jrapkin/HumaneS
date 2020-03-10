@@ -40,7 +40,7 @@ INSERT INTO Animals VALUES('Max',7,10,'docile',1,1,'Male','none',3,3,12);
 INSERT INTO Animals VALUES('Frank',5,5,'spunky',1,1,'Male','pending',4,4,13);
 INSERT INTO Animals VALUES('Toby',3,5,'rambunctious',1,1,'Female','foster',5,5,14);
 
---10 rooms
+--10 rooms complete
 INSERT INTO Rooms VALUES(101,1);
 INSERT INTO Rooms VALUES(102,2);
 INSERT INTO Rooms VALUES(103,3);
