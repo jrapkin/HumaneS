@@ -114,7 +114,6 @@ namespace HumaneSociety
 
                 updatedAddress = newAddress;
             }
-
             // attach AddressId to clientFromDb.AddressId
             clientFromDb.AddressId = updatedAddress.AddressId;
             
@@ -169,23 +168,45 @@ namespace HumaneSociety
             switch (crudOperation)
             {
                 case "create":
-                    // Incomplete. employee only consists of 
-                    // add employee gives us the information to add an employee
                     db.Employees.InsertOnSubmit(employee);
                     db.SubmitChanges();
                     break;
                 case "read":
-                    // TODO: Find employee then 
+                     employee = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
                     break;
                 case "update":
                     // TODO: Update employee information
-                    // Update employee gives us infor to update an employee
+                    // Update employee gives us infor to update an employee db.Addresses.InsertOnSubmit(newAddress);
+                    UpdateEmployee(employee);
                     break;
                 case "delete":
                     // TODO: Find employee then remove/delete
                     // delete employee gives us information do delete by last name and id
                     break;
             }
+        }
+
+        internal static void UpdateEmployee(Employee employeeWithUpdates)
+        {
+            Employee employeeFromDb = null;
+
+            try
+            {
+                employeeFromDb = db.Employees.Where(e => e.EmployeeId == employeeWithUpdates.EmployeeId).Single();
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine("No clients have a ClientId that matches the Client passed in.");
+                Console.WriteLine("No update have been made.");
+                return;
+            }
+
+            // update clientFromDb information with the values on clientWithUpdates (aside from address)
+            employeeFromDb.FirstName = clientWithUpdates.FirstName;
+            employeeFromDb.LastName = clientWithUpdates.LastName;
+            employeeFromDb.UserName = clientWithUpdates.UserName;
+            employeeFromDb.Password = clientWithUpdates.Password;
+            employeeFromDb.Email = clientWithUpdates.Email;
         }
 
         // TODO: Animal CRUD Operations
