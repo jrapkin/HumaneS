@@ -338,7 +338,17 @@ namespace HumaneSociety
         
         internal static int GetDietPlanId(string dietPlanName)
         {
-            throw new NotImplementedException();
+            var dietPlanId = 0;
+            try
+            {
+                dietPlanId = db.DietPlans.Where(plan => plan.Name == dietPlanName).Select(id => id.DietPlanId).Single();
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine("No animals with a matching animal ID were passed in.");
+                Console.WriteLine("No update have been made.");
+            }
+            return dietPlanId;
         }
 
         // TODO: Adoption CRUD Operations
