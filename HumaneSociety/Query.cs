@@ -168,15 +168,12 @@ namespace HumaneSociety
             switch (crudOperation)
             {
                 case "create":
-                    db.Employees.InsertOnSubmit(employee);
-                    db.SubmitChanges();
+                    CreateEmployee(employee);
                     break;
                 case "read":
                      employee = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
                     break;
                 case "update":
-                    // TODO: Update employee information
-                    // Update employee gives us infor to update an employee db.Addresses.InsertOnSubmit(newAddress);
                     UpdateEmployee(employee);
                     break;
                 case "delete":
@@ -186,6 +183,11 @@ namespace HumaneSociety
             }
         }
 
+        internal static void CreateEmployee(Employee employeeToAdd)
+        {
+            db.Employees.InsertOnSubmit(employeeToAdd);
+            db.SubmitChanges();
+        }
         internal static void UpdateEmployee(Employee employeeWithUpdates)
         {
             Employee employeeFromDb = null;
@@ -202,11 +204,13 @@ namespace HumaneSociety
             }
 
             // update clientFromDb information with the values on clientWithUpdates (aside from address)
-            employeeFromDb.FirstName = clientWithUpdates.FirstName;
-            employeeFromDb.LastName = clientWithUpdates.LastName;
-            employeeFromDb.UserName = clientWithUpdates.UserName;
-            employeeFromDb.Password = clientWithUpdates.Password;
-            employeeFromDb.Email = clientWithUpdates.Email;
+            employeeFromDb.FirstName = employeeWithUpdates.FirstName;
+            employeeFromDb.LastName = employeeWithUpdates.LastName;
+            employeeFromDb.UserName = employeeWithUpdates.UserName;
+            employeeFromDb.Password = employeeWithUpdates.Password;
+            employeeFromDb.Email = employeeWithUpdates.Email;
+
+            db.SubmitChanges();
         }
 
         // TODO: Animal CRUD Operations
