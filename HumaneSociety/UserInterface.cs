@@ -139,6 +139,7 @@ namespace HumaneSociety
         }
         public static void DisplayEmployeeInfo(Employee employee)
         {
+            // Front end guy fix this problem
             throw new NotImplementedException();
         }
 

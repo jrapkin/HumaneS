@@ -265,9 +265,8 @@ namespace HumaneSociety
                 Console.WriteLine("No update have been made.");
                 return;
             }
-            var update = from entry in updates select entry;
 
-            foreach (var entry in updates)
+            foreach (KeyValuePair<int,string> entry in updates)
             {
                 switch (entry.Key)
                 {
@@ -279,21 +278,19 @@ namespace HumaneSociety
                         animalToUpdate.Name = entry.Value;
                         break;
                     case 3:
-                        animalToUpdate.Age = int.Parse(entry.Value);
+                        animalToUpdate.Age = Convert.ToInt32(entry.Value);
                         break;
                     case 4:
                         animalToUpdate.Demeanor = entry.Value;
                         break;
                     case 5:
-                        animalToUpdate.KidFriendly = bool.Parse(entry.Value);
+                        animalToUpdate.KidFriendly = Convert.ToBoolean(entry.Value);
                         break;
                     case 6:
-                        animalToUpdate.PetFriendly = bool.Parse(entry.Value);
+                        animalToUpdate.PetFriendly = Convert.ToBoolean(entry.Value);
                         break;
                     case 7:
-                        animalToUpdate.Weight = int.Parse(entry.Value);
-                        break;
-                    default:
+                        animalToUpdate.Weight = Convert.ToInt32(entry.Value);
                         break;
                 }
             }
@@ -308,9 +305,43 @@ namespace HumaneSociety
         }
         
         // TODO: Animal Multi-Trait Search
-        internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
+        internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> traits) // parameter(s)?
         {
-            throw new NotImplementedException();
+            IQueryable<Animal> animalList = null;
+
+            foreach (KeyValuePair<int, string> entry in traits)
+            {
+                switch (entry.Key)
+                {
+
+                    case 1:
+                        int categoryID = GetCategoryId(entry.Value);
+                        animalList = db.Animals.Where(category => category.CategoryId == categoryID);
+                        break;
+                    case 2:
+                        animalList = db.Animals.Where(a => a.Name == entry.Value);
+                        break;
+                    case 3:
+                        animalList = db.Animals.Where(a => a.Age == Convert.ToInt32(entry.Value));
+                        break;
+                    case 4:
+                        animalList = db.Animals.Where(a => a.Demeanor == entry.Value);
+                        break;
+                    case 5:
+                        animalList = db.Animals.Where(a => a.KidFriendly == Convert.ToBoolean(entry.Value));
+                        break;
+                    case 6:
+                        animalList = db.Animals.Where(a => a.PetFriendly == Convert.ToBoolean(entry.Value));
+                        break;
+                    case 7:
+                        animalList = db.Animals.Where(a => a.Weight == Convert.ToInt32(entry.Value));
+                        break;
+                    case 8:
+                        animalList = db.Animals.Where(a => a.AnimalId == Convert.ToInt32(entry.Value));
+                        break;
+                }
+            }
+            return animalList;
         }
          
         // TODO: Misc Animal Things

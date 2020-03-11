@@ -10,8 +10,7 @@ namespace HumaneSociety
     {
         static void Main(string[] args)
         {
-            //PointOfEntry.Run();
-            Query.GetPendingAdoptions();
+            PointOfEntry.Run();
         }
     }
 }
