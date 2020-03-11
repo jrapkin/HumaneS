@@ -82,6 +82,7 @@ namespace HumaneSociety
             var animal = Query.GetAnimalByID(iD);
             UserInterface.DisplayAnimalInfo(animal);
             UserInterface.DisplayUserOptions("Would you like to adopt?");
+            
             if ((bool)UserInterface.GetBitData())
             {
                 Query.Adopt(animal, client);

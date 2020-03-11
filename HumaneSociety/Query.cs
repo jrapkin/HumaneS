@@ -316,11 +316,19 @@ namespace HumaneSociety
         // TODO: Misc Animal Things
         internal static int GetCategoryId(string categoryName)
         {
-            //int categoryId = db.Animals.Where(category => category.Name == categoryName).Select(id => id.CategoryId).Single();
-            //return categoryId;
-            throw new NotImplementedException();
+            var categoryId = 0;
+            try
+            {
+                categoryId = db.Categories.Where(category => category.Name == categoryName).Select(id => id.CategoryId).Single();
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine("No category with a matching category name were passed in.");
+                Console.WriteLine("No update have been made.");
+            }
+            return categoryId;
         }
-        
+
         internal static Room GetRoom(int animalId)
         {
             Room room = null;
@@ -330,7 +338,7 @@ namespace HumaneSociety
             }
             catch (InvalidOperationException e)
             {
-                Console.WriteLine("No animals with a matching animal ID were passed in.");
+                Console.WriteLine("No rooms with a matching animal ID were passed in.");
                 Console.WriteLine("No update have been made.");
             }
             return room;
@@ -345,7 +353,7 @@ namespace HumaneSociety
             }
             catch (InvalidOperationException e)
             {
-                Console.WriteLine("No animals with a matching animal ID were passed in.");
+                Console.WriteLine("No diet plans with a matching diet plan name were passed in.");
                 Console.WriteLine("No update have been made.");
             }
             return dietPlanId;
@@ -354,7 +362,12 @@ namespace HumaneSociety
         // TODO: Adoption CRUD Operations
         internal static void Adopt(Animal animal, Client client)
         {
-            throw new NotImplementedException();
+            Adoption adoptionRequest = new Adoption();
+            adoptionRequest.ClientId = client.ClientId;
+            adoptionRequest.AnimalId = animal.AnimalId;
+            adoptionRequest.PaymentCollected = true;
+            db.Adoptions.InsertOnSubmit(adoptionRequest);
+            db.SubmitChanges();
         }
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
