@@ -114,7 +114,6 @@ namespace HumaneSociety
 
                 updatedAddress = newAddress;
             }
-
             // attach AddressId to clientFromDb.AddressId
             clientFromDb.AddressId = updatedAddress.AddressId;
             
@@ -166,7 +165,71 @@ namespace HumaneSociety
         // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
-            throw new NotImplementedException();
+            switch (crudOperation)
+            {
+                case "create":
+                    CreateEmployee(employee);
+                    break;
+                case "read":
+                    Employee fetchedEmployee = FetchEmployeeInfo(employee);
+                    UserInterface.DisplayEmployeeInfo(fetchedEmployee);
+                    break;
+                case "update":
+                    UpdateEmployee(employee);
+                    break;
+                case "delete":
+                    DeleteEmployee(employee);
+                    break;
+            }
+        }
+
+        internal static void CreateEmployee(Employee employeeToAdd)
+        {
+            db.Employees.InsertOnSubmit(employeeToAdd);
+            db.SubmitChanges();
+        }
+        internal static Employee FetchEmployeeInfo(Employee employee)
+        {
+            employee = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
+            return employee;
+        }
+        internal static void UpdateEmployee(Employee employeeWithUpdates)
+        {
+            Employee employeeFromDb = null;
+
+            try
+            {
+                employeeFromDb = db.Employees.Where(e => e.EmployeeId == employeeWithUpdates.EmployeeId).Single();
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine("No clients have a ClientId that matches the Client passed in.");
+                Console.WriteLine("No update have been made.");
+                return;
+            }
+
+            // update clientFromDb information with the values on clientWithUpdates (aside from address)
+            employeeFromDb.FirstName = employeeWithUpdates.FirstName;
+            employeeFromDb.LastName = employeeWithUpdates.LastName;
+            employeeFromDb.UserName = employeeWithUpdates.UserName;
+            employeeFromDb.Password = employeeWithUpdates.Password;
+            employeeFromDb.Email = employeeWithUpdates.Email;
+
+            db.SubmitChanges();
+        }
+        internal static void DeleteEmployee(Employee employee)
+        {
+            try
+            {
+                Employee employeeToDelete = new Employee();
+                employeeToDelete = db.Employees.Where(emp => emp.LastName == employee.LastName && emp.EmployeeNumber == employee.EmployeeNumber).Single();
+                db.Employees.DeleteOnSubmit(employeeToDelete);
+                db.SubmitChanges();
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine("No Employees have an EmployeeNumber that matches the Employee passed in.");
+            }
         }
 
         // TODO: Animal CRUD Operations
@@ -237,6 +300,7 @@ namespace HumaneSociety
             db.SubmitChanges();
         }
 
+
         internal static void RemoveAnimal(Animal animal)
         {
             db.Animals.DeleteOnSubmit(animal);
@@ -252,6 +316,7 @@ namespace HumaneSociety
         // TODO: Misc Animal Things
         internal static int GetCategoryId(string categoryName)
         {
+
             throw new NotImplementedException();
         }
         

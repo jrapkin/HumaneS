@@ -137,6 +137,10 @@ namespace HumaneSociety
             Console.ReadLine();
 
         }
+        public static void DisplayEmployeeInfo(Employee employee)
+        {
+            throw new NotImplementedException();
+        }
 
         private static string BoolToYesNo(bool? input)
         {

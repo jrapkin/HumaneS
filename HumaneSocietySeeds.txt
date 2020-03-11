@@ -1,38 +1,53 @@
---  5 EMPLOYEES
+--  5 EMPLOYEES complete
 --INSERT INTO Employees VALUES('John','Doe','doej','passwordfordoej',1234, 'doej@humanes.org');
 INSERT INTO Employees VALUES('James','Smith','smithj','passwordforsmithj',2345, 'smithj@humanes.org');
 INSERT INTO Employees VALUES('Michael','Garcia','garciam','passwordforgarciam',3456, 'garciam@humanes.org');
 INSERT INTO Employees VALUES('Robert','Rodriguez','rodriguezr','passwordforrodriguezr',4567, 'rodriguezr@humanes.org');
 INSERT INTO Employees VALUES('David','Hernandez','herdnandezd','passwordforherdnandezd',5678, 'herdnandezd@humanes.org');
 
---5 addresses
-INSERT INTO Addresses VALUES('1122 W St Paul Ave', 'Milwaukee', 'WI',  52129);
-INSERT INTO Addresses VALUES('2233 W St Paul Ave','Milwaukee', 'WI', 52129);
-INSERT INTO Addresses VALUES('3344 W St Paul Ave','Milwaukee', 'WI', 52129);
-INSERT INTO Addresses VALUES('4455 W St Paul Ave','Milwaukee', 'WI',52129);
-INSERT INTO Addresses VALUES('5566 W St Paul Ave','Milwaukee', 'WI',52129);
+--5 addresses complete
+INSERT INTO Addresses VALUES('1122 W St Paul Ave', 'Milwaukee', 49, 52129);
+INSERT INTO Addresses VALUES('2233 W St Paul Ave', 'Milwaukee', 49, 52129);
+INSERT INTO Addresses VALUES('3344 W St Paul Ave', 'Milwaukee', 49, 52129);
+INSERT INTO Addresses VALUES('4455 W St Paul Ave', 'Milwaukee', 49, 52129);
+INSERT INTO Addresses VALUES('5566 W St Paul Ave', 'Milwaukee', 49, 52129);
 
---5 clients 
-INSERT INTO Clients	VALUES('Catherine','Brown','brownc','passwordforbrownc','brownc@google.com',1);
-INSERT INTO Clients	VALUES('Eliza','Davis','davise','passwordfordavise','davise@google.com',2);
-INSERT INTO Clients	VALUES('Jane','Miller','millerj','passwordformillerj','millerj@google.com',3);
-INSERT INTO Clients	VALUES('Ann','Johnson','johnsona','passwordforjohnsona','johnsona@google.com',4);
-INSERT INTO Clients	VALUES('Nancy','Williams','williamsn',','passwordforwilliamsn','williamsn@google.com',5);
+--5 clients complete
+INSERT INTO Clients	VALUES('Eliza','Davis','davise','passwordfordavise',2,'davise@google.com');
+INSERT INTO Clients	VALUES('Jane','Miller','millerj','passwordformillerj',3,'millerj@google.com');
+INSERT INTO Clients	VALUES('Ann','Johnson','johnsona','passwordforjohnsona',4,'johnsona@google.com');
+INSERT INTO Clients	VALUES('Nancy','Williams','williamsn','passwordforwilliamsn',5,'williamsn@google.com');
+INSERT INTO Clients	VALUES('Catherine','Brown','brownc','passwordforbrownc',6,'brownc@google.com');
 
--- 5 categories  species
+-- 5 categories  complete
 INSERT INTO Categories VALUES('cat');
 INSERT INTO Categories VALUES('dog');
 INSERT INTO Categories VALUES('snake');
 INSERT INTO Categories VALUES('mouse');
 INSERT INTO Categories VALUES('hampster');
 
---5 diet plans
-INSERT INTO Categories VALUES('','CatChow',4);
-INSERT INTO Categories VALUES('','DogKibbel',5);
-INSERT INTO Categories VALUES('','SnakeMice',3);
-INSERT INTO Categories VALUES('','MouseCheese',1);
-INSERT INTO Categories VALUES('','HampsterPellets',1);
+--5 diet plans complete
+INSERT INTO DietPlans VALUES('Cat Diet','CatChow',4);
+INSERT INTO DietPlans VALUES('Dog Diet','DogKibbel',5);
+INSERT INTO DietPlans VALUES('Snake Diet','SnakeMice',3);
+INSERT INTO DietPlans VALUES('Mouse Diet','MouseCheese',1);
+INSERT INTO DietPlans VALUES('Hampster Diet','HampsterPellets',1);
 
--- 5 animals
+-- 5 animals complete
+INSERT INTO Animals VALUES('Dobie',12,4,'gentle',1,1,'Male','pending',1,1,10);
+INSERT INTO Animals VALUES('Molly',50,7,'scappy',0,1,'Female','none',2,2,11);
+INSERT INTO Animals VALUES('Max',7,10,'docile',1,1,'Male','none',3,3,12);
+INSERT INTO Animals VALUES('Frank',5,5,'spunky',1,1,'Male','pending',4,4,13);
+INSERT INTO Animals VALUES('Toby',3,5,'rambunctious',1,1,'Female','foster',5,5,14);
 
---10 rooms
+--10 rooms complete
+INSERT INTO Rooms VALUES(101,1);
+INSERT INTO Rooms VALUES(102,2);
+INSERT INTO Rooms VALUES(103,3);
+INSERT INTO Rooms VALUES(104,4);
+INSERT INTO Rooms VALUES(105,5);
+INSERT INTO Rooms VALUES(106,Null);
+INSERT INTO Rooms VALUES(107,Null);
+INSERT INTO Rooms VALUES(108,Null);
+INSERT INTO Rooms VALUES(109,Null);
+INSERT INTO Rooms VALUES(110,Null);
