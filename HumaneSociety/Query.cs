@@ -166,22 +166,42 @@ namespace HumaneSociety
         // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
-            throw new NotImplementedException();
+            switch (crudOperation)
+            {
+                case "create":
+                    db.Employees.InsertOnSubmit(employee);
+                    db.SubmitChanges();
+                    break;
+                case "read":
+                    // TODO: Find employee then 
+                    break;
+                case "update":
+                    // TODO: Update employee information
+                    break;
+                case "delete":
+                    // TODO: Find employee then remove/delete
+                    break;
+                default:
+                    break;
+            }
         }
 
         // TODO: Animal CRUD Operations
         internal static void AddAnimal(Animal animal)
         {
-                db.Animals.InsertOnSubmit(animal);
+            // JESSIE COMPLETED
+            db.Animals.InsertOnSubmit(animal);
         }
 
         internal static Animal GetAnimalByID(int id)
         {
+            // JESSIE COMPLETED 
             throw new NotImplementedException();
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
         {            
+            // JESSIE HAS WORKING CODE
             throw new NotImplementedException();
         }
 
@@ -199,6 +219,7 @@ namespace HumaneSociety
         // TODO: Misc Animal Things
         internal static int GetCategoryId(string categoryName)
         {
+
             throw new NotImplementedException();
         }
         

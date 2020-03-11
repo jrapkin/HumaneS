@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDigram.cd" />
     <None Include="HumaneSociety.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>HumaneSociety.designer.cs</LastGenOutput>
