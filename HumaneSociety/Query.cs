@@ -169,6 +169,8 @@ namespace HumaneSociety
             switch (crudOperation)
             {
                 case "create":
+                    // Incomplete. employee only consists of 
+                    // add employee gives us the information to add an employee
                     db.Employees.InsertOnSubmit(employee);
                     db.SubmitChanges();
                     break;
@@ -177,11 +179,11 @@ namespace HumaneSociety
                     break;
                 case "update":
                     // TODO: Update employee information
+                    // Update employee gives us infor to update an employee
                     break;
                 case "delete":
                     // TODO: Find employee then remove/delete
-                    break;
-                default:
+                    // delete employee gives us information do delete by last name and id
                     break;
             }
         }
