@@ -235,15 +235,8 @@ namespace HumaneSociety
         // TODO: Animal CRUD Operations
         internal static void AddAnimal(Animal animal)
         {
-            if (animal == null)
-            {
-                throw new NullReferenceException();
-            }
-            else
-            {
-                db.Animals.InsertOnSubmit(animal);
-                db.SubmitChanges();
-            }
+            db.Animals.InsertOnSubmit(animal);
+            db.SubmitChanges();
         }
 
         internal static Animal GetAnimalByID(int id)
@@ -443,7 +436,9 @@ namespace HumaneSociety
         internal static void UpdateShot(string shotName, Animal animal)
         {
             Shot shotGiven = db.Shots.Where(shot => shot.Name == shotName).FirstOrDefault();
-            AnimalShot shotToUpdate = db.AnimalShots.Where(animalShot => animalShot.AnimalId == animal.AnimalId).SingleOrDefault();
+            AnimalShot shotToUpdate = db.AnimalShots.Where(animalShot => animalShot.AnimalId == animal.AnimalId).Where(shot => shot.ShotId==shotGiven.ShotId).SingleOrDefault();
+            shotToUpdate.DateReceived = System.DateTime.Today;
+            db.SubmitChanges();
         }
     }
 }
