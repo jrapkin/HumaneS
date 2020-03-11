@@ -374,7 +374,8 @@ namespace HumaneSociety
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
         {
-            throw new NotImplementedException();
+            var listOfPendingAdoptions = db.Adoptions.Where(adoption => adoption.ApprovalStatus == "Pending");
+            return listOfPendingAdoptions;
         }
 
         internal static void UpdateAdoption(bool isAdopted, Adoption adoption)
@@ -396,7 +397,9 @@ namespace HumaneSociety
 
         internal static void RemoveAdoption(int animalId, int clientId)
         {
-            throw new NotImplementedException();
+            Adoption adoptionToRemove = db.Adoptions.Where(application => application.AnimalId == animalId && application.ClientId == clientId).FirstOrDefault();
+            db.Adoptions.DeleteOnSubmit(adoptionToRemove);
+            db.SubmitChanges();
         }
 
         // TODO: Shots Stuff
