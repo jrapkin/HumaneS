@@ -178,7 +178,7 @@ namespace HumaneSociety
                     UpdateEmployee(employee);
                     break;
                 case "delete":
-                    
+                    DeleteEmployee(employee);
                     break;
             }
         }
