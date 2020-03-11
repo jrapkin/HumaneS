@@ -217,6 +217,20 @@ namespace HumaneSociety
 
             db.SubmitChanges();
         }
+        internal static void DeleteEmployee(Employee employee)
+        {
+            try
+            {
+                Employee employeeToDelete = new Employee();
+                employeeToDelete = db.Employees.Where(emp => emp.LastName == employee.LastName && emp.EmployeeNumber == employee.EmployeeNumber).Single();
+                db.Employees.DeleteOnSubmit(employeeToDelete);
+                db.SubmitChanges();
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine("No Employees have an EmployeeNumber that matches the Employee passed in.");
+            }
+        }
 
         // TODO: Animal CRUD Operations
         internal static void AddAnimal(Animal animal)
